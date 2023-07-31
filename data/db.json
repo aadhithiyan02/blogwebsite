@@ -1,0 +1,29 @@
+{
+  "blogs": [
+    {
+      "title": "hello this is my 2nd blog",
+      "body": "lorem ipsum",
+      "author": "Aadhi",
+      "id": 2
+    },
+    {
+      "title": "hello this is my 3rd blog",
+      "body": "lorem ipsum",
+      "author": "mario",
+      "id": 3
+    },
+    {
+      "title": "hello this is my 4th blog",
+      "body": "lorem ipsum",
+      "author": "mario",
+      "id": 4
+    },
+    {
+      "title": "o to one",
+      "author": "Tom Cruise",
+      "body": "I am suriya prakash",
+      "id": 12
+    }
+ 
+  ]
+}
