@@ -1,50 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getDoc, collection, doc } from 'firebase/firestore';
 import { db } from './firebase';
 
 const BlogDetails = () => {
-  const { postId } = useParams();
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    const getPost = async () => {
+    const fetchBlog = async () => {
       try {
-        const blogPostRef = doc(db, 'myblog', postId);
-        const postDoc = await getDoc(blogPostRef);
-        if (postDoc.exists()) {
-          const postData = postDoc.data();
-          setPost({ ...postData, id: postDoc.id });
-        } else {
-          console.log('No such document!');
+        const blogDocRef = doc(db, 'myblog', id);
+        const docSnap = await getDoc(blogDocRef);
+        if (docSnap.exists()) {
+          const blogData = { id: docSnap.id, ...docSnap.data() };
+          setBlog(blogData);
         }
       } catch (error) {
-        console.error('Error fetching blog post data: ', error);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching blog:', error);
       }
     };
-
-    getPost();
-  }, [postId]);
+    fetchBlog();
+  }, [id]);
 
   return (
     <div className="blog-details">
-      {loading ? (
-        <p>Loading the blog...</p>
-      ) : post ? (
+      {blog ? (
         <>
-          <h2>Title: {post.title}</h2>
-          <button>Delete Blog</button>
-
-          <p>Author: {post.author.name}</p>
-          <p>{post.content}</p>
+          <h2>{blog.title}</h2>
+          <h3>Author: {blog.author.name}</h3>
+          {blog.imageURL && <img src={blog.imageURL} alt="Blog" style={{ maxWidth: '400px', maxHeight: '300px' }}/>}
+          <p>{blog.content}</p>
         </>
       ) : (
-        <p>Blog not found!</p>
+        <div>Loading...</div>
       )}
     </div>
+    
   );
 };
 

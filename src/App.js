@@ -1,73 +1,124 @@
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import Navbar from './navbar';
-import Home from './Home';
-import NewBlog from './newblog'
-import BlogDetails from './BlogDetails';
-import NotFound from './notfound';
-import Login from "./login";
-import { useHistory } from "react-router-dom";
+// import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+// import Navbar from './navbar';
+// import Home from './Home';
+// import NewBlog from './newblog'
+// import BlogDetails from './BlogDetails';
+// import NotFound from './notfound';
+// import Login from "./login";
+// import { useHistory } from "react-router-dom";
 
 
-import { useEffect, useState } from "react";
-function App() {
+// import { useEffect, useState } from "react";
+// function App() {
 
 
-  const [auth,setauth]=useState(false);
-  let history=useHistory();
-  // useEffect(() => {
-  //   if(!auth)
-  //   {
-  //     window.location.replace("/Login")
-  //   }
+//   const [auth,setauth]=useState(false);
+//   let history=useHistory();
+//   // useEffect(() => {
+//   //   if(!auth)
+//   //   {
+//   //     window.location.replace("/Login")
+//   //   }
     
 
-  // }, []);
+//   // }, []);
   
 
-  return (
+//   return (
 
-    <Router>
-       <div className="App">
-      <header className="App-header">
-        <div><Navbar auth={auth} setauth={setauth}/></div>
-        <div className="content">
-          <Switch>
-            <Route exact path='/'>
-              <Home auth={auth}>
+//     <Router>
+//        <div className="App">
+//       <header className="App-header">
+//         <div><Navbar auth={auth} setauth={setauth}/></div>
+//         <div className="content">
+//           <Switch>
+//             <Route exact path='/'>
+//               <Home auth={auth}>
 
-              </Home>
-              </Route>
-              <Route path='/newblog'>
-                <NewBlog auth={auth}/>
+//               </Home>
+//               </Route>
+//               <Route path='/newblog'>
+//                 <NewBlog auth={auth}/>
         
-              </Route>
-              <Route path='/blog/:id'>
-                <BlogDetails></BlogDetails>
+//               </Route>
+//               <Route path='/blog/:id'>
+//                 <BlogDetails></BlogDetails>
         
-              </Route>
-              <Route path='/Login'>
-                <Login setauth={setauth}></Login>
+//               </Route>
+//               <Route path='/Login'>
+//                 <Login setauth={setauth}></Login>
 
-              </Route>
+//               </Route>
 
-              <Route path="*">
-                <NotFound />
-              </Route>
-          </Switch>
+//               <Route path="*">
+//                 <NotFound />
+//               </Route>
+//           </Switch>
 
         
-        </div>
+//         </div>
        
 
       
      
-      </header>
-    </div>
+//       </header>
+//     </div>
 
-    </Router>
+//     </Router>
    
+//   );
+// }
+
+// export default App;
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './navbar';
+import Home from './Home';
+import NewBlog from './newblog';
+import BlogDetails from './BlogDetails';
+import NotFound from './notfound';
+import Login from './login';
+import { useEffect, useState } from 'react';
+
+function App() {
+  const [auth, setAuth] = useState(false);
+
+  // useEffect(() => {
+  //   if (!auth) {
+  //     window.location.replace('/Login');
+  //   }
+  // }, []);
+
+  return (
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <div>
+            <Navbar auth={auth} setauth={setAuth} />
+          </div>
+          <div className="content">
+            <Switch>
+              <Route exact path="/">
+                <Home auth={auth} />
+              </Route>
+              <Route path="/newblog">
+                <NewBlog auth={auth} />
+              </Route>
+              <Route path="/blog/:id">
+                <BlogDetails />
+              </Route>
+              <Route path="/Login">
+                <Login setauth={setAuth} />
+              </Route>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </div>
+        </header>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
