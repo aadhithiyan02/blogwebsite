@@ -9,7 +9,7 @@ const Login = ({setauth}) => {
         signInWithPopup(auth,provider).then((result)=>{
             localStorage.setItem("auth",true);
             setauth(true);
-            history.push("/");
+            history.push("/blogwebsite");
 
         })
     }
