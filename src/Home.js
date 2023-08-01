@@ -64,15 +64,8 @@
 //             )}
 //             &nbsp;&nbsp;&nbsp;
 //             <button>&#9998;</button>
-//             {post.imageURL && (
-//               <img
-//                 src={post.imageURL}
-//                 alt="Blog"
-//                 style={{ maxWidth: '300px', maxHeight: '200px' }}
-//               />
-//             )}
+//             
 //             <h3>Author: {post.author.name}</h3>
-//             <p>{post.content}</p>
 //             <Link to={`/blog/${post.id}`}>Read more</Link>
 //           </div>
 //         ))}
