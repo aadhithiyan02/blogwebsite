@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDoc, collection, doc } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import { db } from './firebase';
 
 const BlogDetails = () => {
@@ -24,19 +24,19 @@ const BlogDetails = () => {
   }, [id]);
 
   return (
-    <div className="blog-details">
+    <div className="blog-full-content">
       {blog ? (
         <>
           <h2>{blog.title}</h2>
           <h3>Author: {blog.author.name}</h3>
-          {blog.imageURL && <img src={blog.imageURL} alt="Blog" style={{ maxWidth: '400px', maxHeight: '300px' }}/>}
+          {blog.imageURL && <img src={blog.imageURL} alt="Blog"   style={{ maxWidth: '400px', maxHeight: '300px' }} 
+ />}
           <p>{blog.content}</p>
         </>
       ) : (
         <div>Loading...</div>
       )}
     </div>
-    
   );
 };
 
