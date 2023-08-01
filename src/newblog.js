@@ -146,7 +146,7 @@ const NewBlog = () => {
       }
 
       await addDoc(blogCollection, blogData);
-      history.push('/');
+      history.push("/blogwebsite");
     } catch (error) {
       console.error('Error adding new blog:', error);
     }
