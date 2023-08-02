@@ -18,28 +18,26 @@ const Navbar = ({ auth, setauth }) => {
         console.error("Error signing out:", error);
       });
   };
- 
 
   return (
     <nav className="navbar">
       <h1>Aadhi Blogs</h1>
       <div className="links">
-        <Link to="/blogwebsite" className="create">
+        <Link to="/blogpage" className="create">
           Home
         </Link>
-        
+
         {!auth ? (
           <Link to="/Login" className="login">
             Login
           </Link>
         ) : (
           <>
-          <Link to="/newblog" className="create">
-          New Blog
-        </Link>
-          <button onClick={handleSignout}>Signout</button>
+            <Link to="/newblog" className="create">
+              New Blog
+            </Link>
+            <button onClick={handleSignout}>Signout</button>
           </>
-          
         )}
       </div>
     </nav>

@@ -1,15 +1,14 @@
-
 import { useState } from "react";
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { db, auth, storage } from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const NewBlog = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const blogCollection = collection(db, 'myblog');
+  const blogCollection = collection(db, "myblog");
   const history = useHistory();
 
   const handleImageChange = (e) => {
@@ -25,7 +24,7 @@ const NewBlog = () => {
       const downloadURL = await getDownloadURL(storageRef);
       return downloadURL;
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error("Error uploading image:", error);
       return null;
     }
   };
@@ -54,10 +53,9 @@ const NewBlog = () => {
 
       await addDoc(blogCollection, blogData);
 
-      history.push("/blogwebsite");
-
+      history.push("/blogpage");
     } catch (error) {
-      console.error('Error adding new blog:', error);
+      console.error("Error adding new blog:", error);
     }
   };
 
@@ -70,7 +68,7 @@ const NewBlog = () => {
           <label>Blog Title:</label>
           <input
             type="text"
-            placeholder='Blog Title'
+            placeholder="Blog Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -82,12 +80,12 @@ const NewBlog = () => {
             id=""
             cols="30"
             rows="10"
-            placeholder='Enter Blog content'
+            placeholder="Enter Blog content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
-        <div className='input'>
+        <div className="input">
           <input type="file" onChange={handleImageChange} />
         </div>
 

@@ -78,7 +78,7 @@
 
 //       await updateDoc(blogDoc, updatedBlogData);
 
-//       history.push("/blogwebsite");
+//       history.push("/blogpage");
 //     } catch (error) {
 //       console.error("Error updating blog:", error);
 //     }
@@ -172,7 +172,7 @@ const EditBlog = () => {
 
       await updateDoc(blogRef, updatedBlogData);
 
-      history.push("/blogwebsite");
+      history.push("/blogpage");
     } catch (error) {
       console.error("Error updating blog:", error);
     }

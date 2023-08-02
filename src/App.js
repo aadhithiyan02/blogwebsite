@@ -1,13 +1,12 @@
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './navbar';
-import Home from './Home';
-import NewBlog from './newblog';
-import BlogDetails from './BlogDetails';
-import NotFound from './notfound';
-import Login from './login';
-import { useEffect, useState } from 'react';
-import EditBlog from './edit';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./navbar";
+import Home from "./Home";
+import NewBlog from "./newblog";
+import BlogDetails from "./BlogDetails";
+import NotFound from "./notfound";
+import Login from "./login";
+import { useEffect, useState } from "react";
+import EditBlog from "./edit";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -27,7 +26,7 @@ function App() {
           </div>
           <div className="content">
             <Switch>
-              <Route exact path="/blogwebsite">
+              <Route exact path="/blogpage">
                 <Home auth={auth} />
               </Route>
               <Route path="/newblog">
@@ -39,14 +38,12 @@ function App() {
               <Route path="/Login">
                 <Login setauth={setAuth} />
               </Route>
-             
+
               <Route path="/EditBlog/:id" component={EditBlog} />
               <Route path="*">
                 <NotFound />
               </Route>
-              
-
-              </Switch>
+            </Switch>
           </div>
         </header>
       </div>
