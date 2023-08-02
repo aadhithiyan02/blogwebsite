@@ -26,7 +26,7 @@ function App() {
           </div>
           <div className="content">
             <Switch>
-              <Route exact path="/blogpage">
+              <Route exact path="/blog">
                 <Home auth={auth} />
               </Route>
               <Route path="/newblog">
