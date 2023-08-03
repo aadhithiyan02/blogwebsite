@@ -1,29 +1,26 @@
-// import React, { useState, useEffect } from "react";
-// import { collection, doc, getDoc, updateDoc } from "firebase/firestore";
-// import { useHistory } from "react-router-dom";
-// import { db, auth, storage } from "./firebase";
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-// const EditBlog = ({ blogId }) => {
+// import React, { useEffect, useState } from "react";
+// import { useParams, useHistory } from "react-router-dom";
+// import { doc, getDoc, updateDoc } from "firebase/firestore";
+// import { db } from "./firebase";
+
+// const EditBlog = () => {
+//   const { id } = useParams();
+//   const history = useHistory();
 //   const [title, setTitle] = useState("");
 //   const [content, setContent] = useState("");
-//   const [image, setImage] = useState(null);
 //   const [loading, setLoading] = useState(true);
-//   const blogCollection = collection(db, "myblog");
-//   const history = useHistory();
 
 //   useEffect(() => {
 //     const fetchBlogData = async () => {
 //       try {
-//         const blogDoc = doc(blogCollection, blogId);
-//         const blogSnapshot = await getDoc(blogDoc);
-//         const blogData = blogSnapshot.data();
-
-//         if (blogData) {
+//         const blogRef = doc(db, "myblog", id);
+//         const blogSnapshot = await getDoc(blogRef);
+//         if (blogSnapshot.exists()) {
+//           const blogData = blogSnapshot.data();
 //           setTitle(blogData.title);
 //           setContent(blogData.content);
 //         }
-
 //         setLoading(false);
 //       } catch (error) {
 //         console.error("Error fetching blog data:", error);
@@ -32,53 +29,21 @@
 //     };
 
 //     fetchBlogData();
-//   }, [blogCollection, blogId]);
+//   }, [id]);
 
-//   const handleImageChange = (e) => {
-//     const file = e.target.files[0];
-//     setImage(file);
-//   };
-
-//   const uploadImage = async () => {
-//     try {
-//       if (!image) return null;
-//       const storageRef = ref(storage, `blog_images/${image.name}`);
-//       await uploadBytes(storageRef, image);
-//       const downloadURL = await getDownloadURL(storageRef);
-//       return downloadURL;
-//     } catch (error) {
-//       console.error("Error uploading image:", error);
-//       return null;
-//     }
-//   };
-
-//   const editBlog = async (e) => {
+//   const handleFormSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       let imageURL = null;
-
-//       if (image) {
-//         imageURL = await uploadImage();
-//       }
-
-//       const blogDoc = doc(blogCollection, blogId);
+//       const blogRef = doc(db, "myblog", id);
 
 //       const updatedBlogData = {
 //         title,
 //         content,
-//         author: {
-//           name: auth.currentUser.displayName,
-//           id: auth.currentUser.uid,
-//         },
 //       };
 
-//       if (imageURL) {
-//         updatedBlogData.imageURL = imageURL;
-//       }
+//       await updateDoc(blogRef, updatedBlogData);
 
-//       await updateDoc(blogDoc, updatedBlogData);
-
-//       history.push("/blog");
+//       history.push("/blogwebsite");
 //     } catch (error) {
 //       console.error("Error updating blog:", error);
 //     }
@@ -89,42 +54,38 @@
 //   }
 
 //   return (
-//     <div className="edit">
+//     <div className="create">
 //       <h2>Edit Blog</h2>
-//       <div className="container"></div>
-//       <form onSubmit={editBlog}>
-//         <div className="input">
-//           <label>Blog Title:</label>
-//           <input
-//             type="text"
-//             placeholder="Blog Title"
-//             value={title}
-//             onChange={(e) => setTitle(e.target.value)}
-//           />
-//         </div>
-//         <div className="input">
-//           <label>Blog Content:</label>
-//           <textarea
-//             name=""
-//             id=""
-//             cols="30"
-//             rows="10"
-//             placeholder="Enter Blog content"
-//             value={content}
-//             onChange={(e) => setContent(e.target.value)}
-//           ></textarea>
-//         </div>
-//         <div className="input">
-//           <input type="file" onChange={handleImageChange} />
-//         </div>
-
-//         <button type="submit">Update Blog</button>
-//       </form>
+//       <div className="container">
+//         <form onSubmit={handleFormSubmit}>
+//           <div className="input">
+//             <label>Blog Title:</label>
+//             <input
+//               type="text"
+//               value={title}
+//               onChange={(e) => setTitle(e.target.value)}
+//             />
+//           </div>
+//           <div className="input">
+//             <label>Blog Content:</label>
+//             <textarea
+//               name=""
+//               id=""
+//               cols="30"
+//               rows="10"
+//               value={content}
+//               onChange={(e) => setContent(e.target.value)}
+//             />
+//           </div>
+//           <button type="submit">Update Blog</button>
+//         </form>
+//       </div>
 //     </div>
 //   );
 // };
 
 // export default EditBlog;
+
 
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
@@ -137,6 +98,7 @@ const EditBlog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
+  const [allParagraphs, setAllParagraphs] = useState("");
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -147,6 +109,12 @@ const EditBlog = () => {
           const blogData = blogSnapshot.data();
           setTitle(blogData.title);
           setContent(blogData.content);
+
+          // Assuming paragraphs is an array of strings in the document
+          if (Array.isArray(blogData.paragraphs)) {
+            const allParagraphsText = blogData.paragraphs.join("\n\n"); // Adding double line breaks for paragraph indentation
+            setAllParagraphs(allParagraphsText);
+          }
         }
         setLoading(false);
       } catch (error) {
@@ -163,52 +131,58 @@ const EditBlog = () => {
     try {
       const blogRef = doc(db, "myblog", id);
 
-      // Update blog data with the new values from the form
+      // Assuming paragraphs are separated by double line breaks in the input field
+      const updatedParagraphs = allParagraphs.split("\n\n");
+
       const updatedBlogData = {
         title,
         content,
-        // You can add other fields here as needed
+        paragraphs: updatedParagraphs,
       };
 
       await updateDoc(blogRef, updatedBlogData);
 
-      history.push("/blog");
+      history.push("/blogwebsite");
     } catch (error) {
       console.error("Error updating blog:", error);
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="create">
-      <h2>Edit Blog</h2>
-      <div className="container">
+      <h2><br /> Edit the blog</h2>
+    
+      {loading ? (
+
+        <div>Loading...</div>
+      ) : (
         <form onSubmit={handleFormSubmit}>
-          <div className="input">
-            <label>Blog Title:</label>
+          <div>
+            <label htmlFor="title">Title:</label>
             <input
               type="text"
+              id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="input">
-            <label>Blog Content:</label>
+          <div>
+            <label htmlFor="content">Content:</label>
             <textarea
               name=""
               id=""
               cols="30"
               rows="10"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              placeholder="Enter Blog content"
+              
+              value={allParagraphs} // Displaying the formatted content
+              onChange={(e) => setAllParagraphs(e.target.value)} // Updating allParagraphs state
             />
           </div>
+        
           <button type="submit">Update Blog</button>
         </form>
-      </div>
+      )}
     </div>
   );
 };

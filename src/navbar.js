@@ -23,7 +23,7 @@ const Navbar = ({ auth, setauth }) => {
     <nav className="navbar">
       <h1>Aadhi Blogs</h1>
       <div className="links">
-        <Link to="/blog" className="create">
+        <Link to="/blogwebsite" className="create">
           Home
         </Link>
 

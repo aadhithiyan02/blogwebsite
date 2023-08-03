@@ -8,13 +8,13 @@ const Login = ({ setauth }) => {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("auth", true);
       setauth(true);
-      history.push("/blog");
+      history.push("/blogwebsite");
     });
   };
 
   return (
     <div className="LoginPage">
-      <p>Sign in with Google to continue</p>
+      <p><br /><br />Sign in with Google to continue</p>
       <button className="login-with-google-btn" onClick={signinwithgoogle}>
         Click to sigin
       </button>
