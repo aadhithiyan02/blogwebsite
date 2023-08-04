@@ -36,7 +36,11 @@ const Navbar = ({ auth, setauth }) => {
             <Link to="/newblog" className="create">
               New Blog
             </Link>
-            <button onClick={handleSignout}>Signout</button>
+         
+            <button onClick={handleSignout}>Sign Out</button>
+
+
+           
           </>
         )}
       </div>

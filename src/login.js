@@ -14,9 +14,10 @@ const Login = ({ setauth }) => {
 
   return (
     <div className="LoginPage">
-      <p><br /><br />Sign in with Google to continue</p>
+      <br /><br />
+      {/* <p><br /><br />Sign in with Google to continue</p> */}
       <button className="login-with-google-btn" onClick={signinwithgoogle}>
-        Click to sigin
+        Click to signin
       </button>
     </div>
   );

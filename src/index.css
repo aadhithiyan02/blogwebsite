@@ -9,9 +9,9 @@
 }
 
 .navbar{
-  position: fixed; /* Add this to make the navbar fixed */
-  top: 0; /* Optional: Set the top position of the navbar */
-  left: 0; /* Optional: Set the left position of the navbar */
+  position: fixed; 
+  top: 0; 
+  left: 0; 
   right: 0;
   
   
@@ -23,11 +23,13 @@
   border-bottom: 1px solid #f2f2f2;
   font-family: "Poppins";
   background-color: white;
+  z-index: 999;
 
 }
 
 .navbar h1{
-  color:#ec6f94;
+  
+  color:#5680E9;
 
 
 }
@@ -40,15 +42,26 @@
   text-decoration: dashed;
   padding: 6px;
   padding:10px;
-  background-color: #ec6f94;
+  background-color:#5680E9;
   border-radius: 8px;
+  border: none;
   
 }
-.navbar a:hover, .navbar button:hover{
-  color: #201bb0;
-  font-family: "Quicksand";
+.navbar a:hover{
+  color: #fefefe;
+ 
   font-family: "Poppins";
 
+}
+.navbar button{
+  height: 42px;
+  font-size: 16px;
+  font-family: "Poppins";
+  margin-top: 20px;
+
+}
+.navbar button:hover{
+  color: #fefefe;
 }
 .content{
   max-width: 800px;
@@ -59,27 +72,91 @@
 }
 
 
-.blog-preview{
-  padding: 10px 16px;
-  margin: 20px 0;
-  border-bottom: 2px solid teal;
 
+
+.home {
+  padding: 20px;
 }
 
-.blog-preview:hover{
-  box-shadow: 1px 3px 5px;
-
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-.blog-preview h2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-style: italic;
+.blog-preview {
+  margin-bottom: 20px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover,
+.card:active {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card-header img:hover,
+.card-header img:active {
+  transform: scale(1.2); 
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
   margin-bottom: 8px;
 }
 
-.blog-preview a{
-  text-decoration: none;
+.card-title {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
+
+.timestamp {
+  font-size: 12px;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+
+
+
+
 
 .blog-details h2{
   font-size: 20px;
@@ -122,7 +199,7 @@
 
 }
 .create button{
-  background-color: #f1356d;
+  background-color:#5680E9;
   color:#fff;
   border:0;
   padding: 8px;
@@ -184,9 +261,13 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0069d9;
 } 
+
+
+
 .blog-details h2{
   font-size: 20px;
-  color: #f1356d;
+  color:#5ab9ea;
+  /* color:#5680E9; */
   margin-bottom: 10px;
   }
 
@@ -201,14 +282,7 @@ button[type="submit"]:hover {
 
 }
 
-.progress-line {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background-color:#f1356d;
-  z-index: 9999;
-}
+
 .LoginPage {
   
   display: flex;
@@ -254,4 +328,18 @@ button[type="submit"]:hover {
   background-color: #ebebeb;
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
   cursor: not-allowed;
+}
+.read
+{
+  font-weight:bolder;
+  
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #5680E9;
+  z-index: 9999;
 }
