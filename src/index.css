@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+*{
+  margin: 0;
+  
+  color: #333;
+
+}
+
+.navbar{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;
+  
+  
+  padding:20px;
+  display: flex;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+  font-family: "Poppins";
+  background-color: white;
+  z-index: 999;
+
+}
+
+.navbar h1{
+  
+  color:#5680E9;
+
+
+}
+.navbar .links, .navbar button{
+  margin-left: auto;
+
+}
+.navbar a,.navbar button{
+  margin-left: 16px;
+  text-decoration: dashed;
+  padding: 6px;
+  padding:10px;
+  background-color:#5680e9;
+  border-radius: 8px;
+  border: none;
+  
+}
+.navbar a:hover{
+  color: #fefefe;
+ 
+  font-family: "Poppins";
+
+}
+.navbar button{
+  height: 42px;
+  font-size: 16px;
+  font-family: "Poppins";
+  margin-top: 20px;
+
+}
+.navbar button:hover{
+  color: #fefefe;
+}
+.content{
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: justify;
+  font-family: "Roboto";
+}
+
+
+
+
+.home {
+  padding: 20px;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-preview {
+  margin-bottom: 20px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover,
+.card:active {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card-header img:hover,
+.card-header img:active {
+  transform: scale(1.2); 
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .blog-list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+
+
+
+
+
+.blog-details h2{
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+  }
+
+.blog-details div{
+  margin:20px 0;
+  color: violet;
+}
+
+
+.create{
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+.create label{
+  text-align:left;
+  display: block;
+}
+
+.create input, .create textarea, .create select{
+
+
+  width: 100%;
+  padding:6px 10px;
+  margin: 18px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+
+}
+.create button{
+  background-color:#5680E9;
+  color:#fff;
+  border:0;
+  padding: 8px;
+  border-radius:8px;
+  cursor:pointer;
+
+
+}
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-size:cover;
+  
+  
+}
+
+.login-box {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  width: 300px;
+  background-color: white;
+  opacity: 0.95;
+}
+
+.login-box h2 {
+  margin-top: 0;
+  color:rgb(0, 0, 0);
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  display: flex;
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+} 
+
+
+
+.blog-details h2{
+  font-size: 30px;
+  color:#5ab9ea;
+  /* color:#5680E9; */
+  margin-bottom: 10px;
+  }
+
+.blog-details div{
+  margin:20px 0;
+  color: #5680E9;
+}
+.blog-full-content{
+  font-size: 20px;
+
+  font-family: "Poppins";
+
+}
+
+
+.LoginPage {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginPage p {
+  font-size: 30px;
+}
+
+.login-with-google-btn {
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 5px 16px 12px 42px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #757575;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+}
+.login-with-google-btn:hover {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.login-with-google-btn:active {
+  background-color: #eeeeee;
+}
+.login-with-google-btn:focus {
+  outline: none;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 0 3px #c8dafc;
+}
+.login-with-google-btn:disabled {
+  filter: grayscale(100%);
+  background-color: #ebebeb;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.read
+{
+  font-weight:bolder;
+  
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #5680E9;
+  z-index: 9999;
+}
+
+
+.action-button {
+  margin-left: 16px;
+  text-decoration: dashed;
+  padding: 6px 10px; 
+  background-color: #5680e9;
+  color: #000; 
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-family: "Poppins";
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.action-button:hover {
+  color: #fff; 
+  background-color: #5680e9; 
+}
+
+
+
+.comments-section {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.comments-list {
+  margin-top: 20px;
+}
+
+/* Styling for the comment cards */
+.comment-card {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative; /* Added to make room for the buttons */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: box-shadow 0.3s ease;
+}
+
+.comment-card:hover {
+  border: 1px solid transparent; /* Hide the border until hovered */
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Styling for the comment content and details */
+.comment-details {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Styling for the comment buttons */
+.comment-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 5px; /* Adjust the position as per your design */
+  right: 10px; /* Adjust the position as per your design */
+}
+
+
+.edit-button,
+.delete-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px; /* Added padding to make the buttons smaller */
+}
+
+.edit-button {
+  margin-right: 5px; /* Adjust the margin as per your design */
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  color: #007bff;
+}
+.like-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #777;
+  font-size: 20px;
+}
+
+.like-button.liked {
+  color: #e74c3c; /* Change the color to your desired liked color */
+}
+
+.like-button span {
+  margin-left: 5px;
+}
+.comment-input textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* CSS for smaller screens */
+@media (max-width: 768px) {
+  .comment-input textarea {
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
